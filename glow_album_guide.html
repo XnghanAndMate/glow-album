@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XngHan&Xoul - 1st Mini Album [Glow] 购买攻略</title>
+<style>
+  :root {
+    --primary: #b8860b;
+    --primary-light: #f5e6c0;
+    --accent: #8b5e3c;
+    --bg: #fdf8f0;
+    --card: #ffffff;
+    --border: #e8d5b0;
+    --text: #3a2e1e;
+    --text-muted: #7a6a50;
+    --tag-bg: #f0e6d0;
+    --highlight: #fff3cd;
+    --green: #28a745;
+    --red: #dc3545;
+    --blue: #0066cc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1a0a00 0%, #3d1f00 50%, #1a0a00 100%);
+    color: #f5e6c0;
+    text-align: center;
+    padding: 36px 20px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '✦ ✦ ✦';
+    position: absolute;
+    top: 12px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; letter-spacing: 8px; opacity: 0.5;
+    color: var(--primary);
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #f0d080;
+    text-shadow: 0 0 20px rgba(240,200,80,0.4);
+    margin-bottom: 6px;
+  }
+  .header h1 span { color: #ffd700; }
+  .header p {
+    font-size: 13px;
+    opacity: 0.75;
+    margin-top: 6px;
+  }
+  .header .badge {
+    display: inline-block;
+    background: rgba(184,134,11,0.3);
+    border: 1px solid rgba(255,215,0,0.4);
+    color: #ffd700;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+
+  /* Main layout */
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px 16px 60px; }
+
+  /* Quick Info Bar */
+  .info-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .info-pill {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 6px 14px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .info-pill .icon { font-size: 14px; }
+  .info-pill strong { color: var(--text); }
+
+  /* Section */
+  .section { margin-bottom: 32px; }
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    border-left: 3px solid var(--primary);
+    padding-left: 10px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Filters */
+  .filters {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .filter-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .filter-row:last-child { margin-bottom: 0; }
+  .filter-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    min-width: 40px;
+    font-weight: 600;
+  }
+  .filter-btn {
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--tag-bg);
+    color: var(--text);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { background: var(--primary-light); border-color: var(--primary); }
+  .filter-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    font-weight: 600;
+  }
+
+  /* Sort bar */
+  .sort-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .sort-bar .label { font-size: 12px; color: var(--text-muted); }
+  .sort-btn {
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: white;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sort-btn:hover { background: var(--primary-light); }
+  .sort-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+  /* Cards Grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 14px;
+  }
+
+  .album-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.25s;
+    position: relative;
+  }
+  .album-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+    border-color: var(--primary);
+  }
+  .album-card.hidden { display: none; }
+  .album-card.deadline-near .card-top { border-top: 3px solid #ff6b35; }
+  .album-card.deadline-past { opacity: 0.5; }
+
+  .card-top {
+    background: linear-gradient(135deg, #2a1500 0%, #4a2800 100%);
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-top: 3px solid var(--primary);
+  }
+  .card-platform {
+    color: #f0d080;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .card-platform small {
+    display: block;
+    color: rgba(240,208,128,0.6);
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .card-price-badge {
+    background: rgba(255,215,0,0.15);
+    border: 1px solid rgba(255,215,0,0.3);
+    color: #ffd700;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .card-price-badge span { font-size: 11px; font-weight: 400; opacity: 0.8; }
+
+  .card-body { padding: 12px 14px; }
+
+  .card-tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .tag-type { background: #e8f4e8; color: #2d6a2d; border: 1px solid #c3e6c3; }
+  .tag-ver { background: #e8eaf6; color: #3949ab; border: 1px solid #c5cae9; }
+  .tag-qty { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; }
+
+  .card-info { display: flex; flex-direction: column; gap: 6px; }
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+  }
+  .info-key {
+    color: var(--text-muted);
+    font-size: 11px;
+    min-width: 44px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .info-val { color: var(--text); flex: 1; line-height: 1.5; }
+  .info-val.shipping { color: #0066cc; font-weight: 600; }
+  .info-val.deadline { font-weight: 600; }
+  .info-val.deadline.urgent { color: #dc3545; }
+  .info-val.deadline.normal { color: #28a745; }
+  .info-val.gift { color: #7b3fa0; font-size: 12px; }
+
+  .card-calc {
+    background: var(--primary-light);
+    border-top: 1px solid var(--border);
+    padding: 10px 14px;
+  }
+  .calc-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .calc-label { font-size: 12px; color: var(--accent); flex: 1; }
+  .calc-input {
+    width: 60px;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    text-align: center;
+    background: white;
+    color: var(--text);
+  }
+  .calc-input:focus { outline: none; border-color: var(--primary); }
+  .calc-result {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 5px;
+    min-height: 18px;
+  }
+  .calc-result strong { color: var(--primary); font-size: 14px; }
+  .calc-result .note { color: var(--text-muted); font-style: italic; font-size: 11px; }
+
+  /* Shipping Explanation */
+  .shipping-guide {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .shipping-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .shipping-item {
+    background: var(--tag-bg);
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+  }
+  .shipping-item .platform-name { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+  .shipping-item .shipping-detail { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .shipping-item .shipping-detail span { color: var(--blue); font-weight: 600; }
+
+  /* No results */
+  .no-results {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 14px;
+    display: none;
+  }
+  .no-results.show { display: block; }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .stat-item {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .stat-item strong { color: var(--primary); }
+  #result-count { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+
+  /* Deadline legend */
+  .legend {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .cards-grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 20px; }
+    .shipping-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Floating total */
+  .floating-total {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 13px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 100;
+    min-width: 180px;
+  }
+  .floating-total.show { display: flex; }
+  .floating-total .ft-title { font-size: 11px; opacity: 0.85; }
+  .floating-total .ft-amount { font-size: 20px; font-weight: 700; }
+  .floating-total .ft-detail { font-size: 11px; opacity: 0.8; }
+  .floating-total .ft-close {
+    position: absolute;
+    top: 6px; right: 10px;
+    cursor: pointer;
+    opacity: 0.7;
+    font-size: 14px;
+  }
+  .floating-total .ft-close:hover { opacity: 1; }
+
+  /* Recommendation section */
+  .budget-section { margin-bottom: 18px; }
+  .budget-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .budget-header.budget-low {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #0d47a1;
+    border: 1.5px solid #90caf9;
+  }
+  .budget-header.budget-high {
+    background: linear-gradient(135deg, #fff8e1, #ffe082);
+    color: #6d4c00;
+    border: 1.5px solid #ffc107;
+  }
+  .budget-header .budget-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: auto;
+  }
+  .budget-low .budget-tag { background: #0d47a1; color: #fff; }
+  .budget-high .budget-tag { background: #f9a825; color: #fff; }
+  .budget-desc {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    padding: 0 4px;
+    line-height: 1.6;
+  }
+
+  /* Recommendation cards */
+  .rec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .rec-card {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #a5d6a7;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    background: var(--card);
+  }
+  .rec-card.bundle-card {
+    border-color: #ffc107;
+    box-shadow: 0 2px 12px rgba(255,193,7,0.2);
+  }
+  .rec-card-header {
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rec-card.bundle-card .rec-card-header {
+    background: linear-gradient(135deg, #6d4c00, #f9a825);
+  }
+  .rec-card-header .rec-ver {
+    font-size: 11px;
+    color: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+  .rec-card-header .rec-crown { font-size: 16px; }
+  .rec-card-body { padding: 12px 14px; }
+  .rec-pick-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .rec-pick-platform {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .rec-pick-price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #c43d00;
+    margin-bottom: 8px;
+  }
+  .rec-contents {
+    font-size: 11px;
+    color: #555;
+    background: #f9f6f0;
+    border-radius: 6px;
+    padding: 5px 8px;
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .rec-reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  .rec-reason-item {
+    font-size: 12px;
+    color: #2d6a2d;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    line-height: 1.4;
+  }
+  .rec-card.bundle-card .rec-reason-item { color: #5d3a00; }
+  .rec-reason-item .r-icon { flex-shrink: 0; }
+  .rec-runner-up {
+    border-top: 1px dashed var(--border);
+    padding-top: 8px;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .rec-runner-up strong { color: var(--text); }
+
+  /* Card badges */
+  .badge-row {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .rec-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .badge-price { background: #fff3e0; color: #bf360c; border: 1px solid #ffcc80; }
+  .badge-gift  { background: #f3e5f5; color: #6a1b9a; border: 1px solid #ce93d8; }
+  .badge-overall { background: #e8f5e9; color: #1b5e20; border: 1px solid #a5d6a7; }
+
+  /* System shipping warning in calc */
+  .calc-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 6px;
+    padding: 6px 9px;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #6d4c00;
+    line-height: 1.5;
+  }
+  .calc-warning .warn-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+  .calc-warning strong { color: #c43d00; }
+
+  /* Disclaimer */
+  .disclaimer {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 20px;
+    font-size: 11.5px;
+    color: #666;
+    line-height: 1.8;
+  }
+  .disclaimer strong { color: #444; }
+  .disclaimer .disc-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* New album note */
+  .add-note {
+    background: #f0f8ff;
+    border: 1px dashed #90caf9;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #1565c0;
+    line-height: 1.6;
+  }
+  .add-note strong { color: #0d47a1; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>XngHan&Xoul — <span>1st Mini Album</span> [Glow]</h1>
+  <p>各平台购买汇总 · 特典说明 · 运费估算</p>
+  <div class="badge">💿 数据截止日期：最晚 2026/4/26</div>
+</div>
+
+<div class="container">
+
+  <!-- Info Pillls -->
+  <div class="info-bar">
+    <div class="info-pill"><span class="icon">📦</span> 版本：<strong>Glow Ver. / Adventure Part 2 Ver. / XngHan Ver.</strong></div>
+    <div class="info-pill"><span class="icon">🛒</span> 类型：<strong>单张随机 / 套装</strong></div>
+    <div class="info-pill"><span class="icon">⏰</span> 最晚截单：<strong>2026/4/26 23:59</strong></div>
+  </div>
+
+  <!-- Shipping Guide -->
+  <div class="section">
+    <div class="section-title">📬 各平台运费说明</div>
+    <div class="shipping-guide">
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">运费格式解读：<strong style="color:var(--text)">首重运费 + 续重/件运费</strong>。"系统叠加"表示下单时平台自动计算，实际运费会在结算页面显示。</p>
+      <div class="shipping-grid">
+        <div class="shipping-item">
+          <div class="platform-name">StarRiver</div>
+          <div class="shipping-detail">Glow Ver: <span>26 + 6/件</span><br>Adv: <span>26 + 4/件</span><br>XngHan: <span>26 + 3/件</span></div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">Weverse Shop</div>
+          <div class="shipping-detail">Glow: <span>30.5 + 15/件</span><br>Adv: <span>25.5 + 10/件</span><br>XngHan: <span>25.5 + 0 + 5</span><br>套装: <span>35.5 + 20</span></div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">Ktown4U</div>
+          <div class="shipping-detail">首重 <span>24元</span><br>续重系统自动叠加计算</div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">MakeStar</div>
+          <div class="shipping-detail">首重 <span>26元</span><br>续重系统自动叠加计算</div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">AppleMusic</div>
+          <div class="shipping-detail">首重 <span>26元</span><br>续重 <span>+6/件</span></div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">熊宝系列</div>
+          <div class="shipping-detail">Jump up: <span>25 + 系统叠加</span><br>EverLine: 运费待确认<br>Minirecord: 运费待确认</div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">偶便系列</div>
+          <div class="shipping-detail">Jump up: <span>26 + 6/件</span><br>EverLine / Minirecord: 运费待确认</div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">SR+AM (套装)</div>
+          <div class="shipping-detail">固定运费 <span>56元</span><br>1车限1套</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommendation Panel -->
+  <div class="section">
+    <div class="section-title">🏆 性价比推荐</div>
+    <div class="rec-grid" id="rec-grid"></div>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:-4px;margin-bottom:16px">
+      ※ 综合考量专辑价格、特典质量及运费透明度。运费"系统叠加"的平台实际到手价可能更高，最终以平台结算页为准。
+    </p>
+  </div>
+
+  <!-- Filters -->
+  <div class="section">
+    <div class="section-title">🔍 筛选 & 排序</div>
+    <div class="filters">
+      <div class="filter-row">
+        <span class="filter-label">类型</span>
+        <button class="filter-btn active" onclick="setFilter('type','all',this)">全部</button>
+        <button class="filter-btn" onclick="setFilter('type','单张随机',this)">单张随机</button>
+        <button class="filter-btn" onclick="setFilter('type','套装',this)">套装</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">版本</span>
+        <button class="filter-btn active" onclick="setFilter('ver','all',this)">全部</button>
+        <button class="filter-btn" onclick="setFilter('ver','Glow Ver.',this)">Glow Ver.</button>
+        <button class="filter-btn" onclick="setFilter('ver','Adventure Part 2 Ver.',this)">Adventure Part 2</button>
+        <button class="filter-btn" onclick="setFilter('ver','XngHan Ver.',this)">XngHan Ver.</button>
+        <button class="filter-btn" onclick="setFilter('ver','套装',this)">套装系列</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">平台</span>
+        <button class="filter-btn active" onclick="setFilter('platform','all',this)">全部</button>
+        <button class="filter-btn" onclick="setFilter('platform','StarRiver',this)">StarRiver</button>
+        <button class="filter-btn" onclick="setFilter('platform','Weverse',this)">Weverse</button>
+        <button class="filter-btn" onclick="setFilter('platform','Ktown4U',this)">Ktown4U</button>
+        <button class="filter-btn" onclick="setFilter('platform','MakeStar',this)">MakeStar</button>
+        <button class="filter-btn" onclick="setFilter('platform','熊宝',this)">熊宝店</button>
+        <button class="filter-btn" onclick="setFilter('platform','偶便',this)">偶便店</button>
+        <button class="filter-btn" onclick="setFilter('platform','Apple',this)">AppleMusic</button>
+        <button class="filter-btn" onclick="setFilter('platform','洪承汉堡',this)">洪承汉堡店</button>
+      </div>
+    </div>
+    <div class="sort-bar">
+      <span class="label">排序：</span>
+      <button class="sort-btn active" onclick="sortCards('price-asc',this)">价格 ↑</button>
+      <button class="sort-btn" onclick="sortCards('price-desc',this)">价格 ↓</button>
+      <button class="sort-btn" onclick="sortCards('deadline',this)">截单时间</button>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#ff6b35"></div> 即将截单（≤3天）</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#28a745"></div> 截单充裕</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#ccc"></div> 已过期</div>
+    </div>
+    <div id="result-count"></div>
+  </div>
+
+  <!-- Cards -->
+  <div class="section">
+    <div class="section-title">📋 平台详情 & 价格计算器</div>
+    <div class="cards-grid" id="cards-grid"></div>
+    <div class="no-results" id="no-results">暂无符合条件的结果 🙈</div>
+  </div>
+
+  <!-- Glossary -->
+  <div class="section">
+    <div class="section-title">📖 名词解释（看不懂的术语在这里）</div>
+    <div class="shipping-guide">
+      <div class="shipping-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr))">
+        <div class="shipping-item">
+          <div class="platform-name">🃏 小卡</div>
+          <div class="shipping-detail">随专辑附赠的小尺寸卡片，通常是偶像写真，大小类似名片</div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">📸 拍立得（大卡）</div>
+          <div class="shipping-detail">拍立得风格的照片卡，比小卡大，视觉效果更好，一般作为加购赠品</div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">X款选1 / 随机</div>
+          <div class="shipping-detail">有X种不同款式的卡，下单后随机发一款，<strong>无法指定款式</strong></div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">🎉 凑套 / 毕业</div>
+          <div class="shipping-detail">集齐所有款式叫"全套毕业"。凑套=需要买多张才能集齐全部款式</div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">熊宝 / 偶便</div>
+          <div class="shipping-detail">粉丝个人开的代购店，通常专门服务某位成员的粉丝群体</div>
+        </div>
+        <div class="shipping-item">
+          <div class="platform-name">系统叠加运费</div>
+          <div class="shipping-detail">平台结算时自动计算的续重费用，买越多件运费会自动增加，具体看结算页面</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <div class="disc-title">📋 免责声明</div>
+    本页面信息由粉丝整理汇总，仅供参考，不构成任何购买建议。请注意以下事项：<br>
+    1. <strong>价格与特典</strong>：各平台价格、赠品内容可能随时调整，实际以各平台官方页面公示为准，本页面不保证信息的实时准确性。<br>
+    2. <strong>运费估算</strong>：标注"系统叠加"的运费<strong>无法在本页精确计算</strong>，下单前请务必在平台结算页确认实际运费，避免产生预算偏差。<br>
+    3. <strong>截止时间</strong>：所有截单时间以各平台公告为准，建议提前下单，因错过截单日期导致的损失本页面概不负责。<br>
+    4. <strong>库存限制</strong>：部分平台设有每车限购数量，具体限制以实际下单时页面显示为准。<br>
+    5. <strong>性价比推荐</strong>：综合推荐基于公开信息的机械计算，不代表任何平台立场，购买决策请结合个人需求自行判断。
+  </div>
+
+  <!-- Add more note -->
+  <div class="add-note">
+    <strong>📌 如何添加新专辑信息？</strong><br>
+    打开此HTML文件，找到 <code>const albums = [...]</code> 部分，按照相同格式在数组中添加新条目即可。每条记录包含：类型、版本、平台、特典、价格、运费基础费、续重费、是否系统叠加、备注、截止日期。
+  </div>
+
+</div>
+
+<!-- Floating Total -->
+<div class="floating-total" id="floating-total">
+  <span class="ft-close" onclick="document.getElementById('floating-total').classList.remove('show')">✕</span>
+  <span class="ft-title">🧮 当前选购估算总费用</span>
+  <span class="ft-amount" id="ft-amount">¥0</span>
+  <span class="ft-detail" id="ft-detail"></span>
+</div>
+
+<script>
+// ============================================================
+// 数据源 - 如需添加新专辑，在此数组中继续追加
+// ============================================================
+const albums = [
+  // ===== 单张随机 - Glow Ver. =====
+  // giftScore: 0=无特典 1=随机小卡 2=小卡可凑套 3=小卡+拍立得 5=全套保障
+  {
+    id: 1, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'StarRiver', platformTag: 'StarRiver', giftScore: 3,
+    gift: '🃏 每买1张专辑随机送1张小卡（2款式选1，凑齐2款算全套）\n📸 每买2张专辑额外送1张拍立得大卡（2款随机，凑齐4款算全套）',
+    price: 62, shippingBase: 26, shippingAdd: 6, shippingSystem: false,
+    note: '1车限10张', deadline: '2026-04-26 23:59'
+  },
+  {
+    id: 2, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'AppleMusic', platformTag: 'Apple', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 62, shippingBase: 26, shippingAdd: 6, shippingSystem: false,
+    note: '1车限10张', deadline: '2026-04-26 22:00'
+  },
+  {
+    id: 3, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'Ktown4U', platformTag: 'Ktown4U', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 63, shippingBase: 24, shippingAdd: null, shippingSystem: true,
+    note: '1车限10张', deadline: '2026-04-26 22:59'
+  },
+  {
+    id: 4, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'MakeStar', platformTag: 'MakeStar', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 67, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: '1车限10张', deadline: '2026-04-26 22:00'
+  },
+  {
+    id: 5, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'Weverse Shop', platformTag: 'Weverse', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 84, shippingBase: 30.5, shippingAdd: 15, shippingSystem: false,
+    note: '1车限10张', deadline: '2026-04-26 22:59'
+  },
+  {
+    id: 6, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'EverLine（熊宝）', platformTag: '熊宝', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 70, shippingBase: null, shippingAdd: null, shippingSystem: true,
+    note: '运费待确认', deadline: '2026-04-25'
+  },
+  {
+    id: 7, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'Jump up（熊宝）', platformTag: '熊宝', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 83, shippingBase: 25, shippingAdd: null, shippingSystem: true,
+    note: '1车限10张', deadline: '2026-04-25'
+  },
+  {
+    id: 8, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'Minirecord（熊宝）', platformTag: '熊宝', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 83, shippingBase: null, shippingAdd: null, shippingSystem: true,
+    note: '运费待确认', deadline: '2026-04-25'
+  },
+  {
+    id: 9, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'EverLine（偶便）', platformTag: '偶便', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 83, shippingBase: null, shippingAdd: null, shippingSystem: true,
+    note: '运费待确认', deadline: '2026-04-26'
+  },
+  {
+    id: 10, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'Jump up（偶便）', platformTag: '偶便', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 82, shippingBase: 26, shippingAdd: 6, shippingSystem: false,
+    note: '1车限10张', deadline: '2026-04-26'
+  },
+  {
+    id: 11, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'Minirecord（偶便）', platformTag: '偶便', giftScore: 2,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 82, shippingBase: null, shippingAdd: null, shippingSystem: true,
+    note: '运费待确认', deadline: '2026-04-26'
+  },
+
+  // ===== 单张随机 - Adventure Part 2 Ver. =====
+  {
+    id: 12, album: 'Glow', type: '单张随机', ver: 'Adventure Part 2 Ver.',
+    platform: 'StarRiver', platformTag: 'StarRiver', giftScore: 3,
+    gift: '🃏 每买1张专辑随机送1张小卡（2款式选1，凑齐2款算全套）\n📸 每买2张专辑额外送1张拍立得大卡（2款随机，凑齐4款算全套）',
+    price: 43, shippingBase: 26, shippingAdd: 4, shippingSystem: false,
+    note: '1车限10张', deadline: '2026-04-26 23:59'
+  },
+  {
+    id: 13, album: 'Glow', type: '单张随机', ver: 'Adventure Part 2 Ver.',
+    platform: 'MakeStar', platformTag: 'MakeStar', giftScore: 1,
+    gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，不保证款式）',
+    price: 46, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: '1车限10张', deadline: '2026-04-26 22:00'
+  },
+  {
+    id: 14, album: 'Glow', type: '单张随机', ver: 'Adventure Part 2 Ver.',
+    platform: 'Ktown4U', platformTag: 'Ktown4U', giftScore: 0,
+    gift: '无',
+    price: 44, shippingBase: 24, shippingAdd: null, shippingSystem: true,
+    note: '1车限10张', deadline: '2026-04-26 22:59'
+  },
+  {
+    id: 15, album: 'Glow', type: '单张随机', ver: 'Adventure Part 2 Ver.',
+    platform: 'Weverse Shop', platformTag: 'Weverse', giftScore: 0,
+    gift: '无',
+    price: 58, shippingBase: 25.5, shippingAdd: 10, shippingSystem: false,
+    note: '1车限10张', deadline: '2026-04-26 22:59'
+  },
+  {
+    id: 16, album: 'Glow', type: '单张随机', ver: 'Adventure Part 2 Ver.',
+    platform: '熊宝综合', platformTag: '熊宝', giftScore: 0,
+    gift: '无',
+    price: 44, shippingBase: 25, shippingAdd: null, shippingSystem: true,
+    note: '1车限10张', deadline: '2026-04-25'
+  },
+
+  // ===== 单张随机 - XngHan Ver. =====
+  {
+    id: 17, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
+    platform: 'StarRiver', platformTag: 'StarRiver', giftScore: 0,
+    gift: '无',
+    price: 97, shippingBase: 26, shippingAdd: 3, shippingSystem: false,
+    note: '1车限10张', deadline: '2026-04-26 23:59'
+  },
+  {
+    id: 18, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
+    platform: 'MakeStar', platformTag: 'MakeStar', giftScore: 0,
+    gift: '无',
+    price: 98, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: '1车限10张', deadline: '2026-04-26 22:00'
+  },
+  {
+    id: 19, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
+    platform: 'Ktown4U', platformTag: 'Ktown4U', giftScore: 0,
+    gift: '无',
+    price: 98, shippingBase: 24, shippingAdd: null, shippingSystem: true,
+    note: '1车限10张', deadline: '2026-04-26 22:59'
+  },
+  {
+    id: 20, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
+    platform: 'Weverse Shop', platformTag: 'Weverse', giftScore: 0,
+    gift: '无',
+    price: 129, shippingBase: 30.5, shippingAdd: 5, shippingSystem: false,
+    note: '1车限10张', deadline: '2026-04-26 22:59'
+  },
+  {
+    id: 21, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
+    platform: '熊宝综合', platformTag: '熊宝', giftScore: 0,
+    gift: '无',
+    price: 98, shippingBase: 25, shippingAdd: null, shippingSystem: true,
+    note: '1车限10张', deadline: '2026-04-25'
+  },
+
+  // ===== 单张随机 - XngHan Ver. Smart Album =====
+  {
+    id: 25, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
+    platform: 'Ktown4U Smart Album', platformTag: 'Ktown4U', giftScore: 0,
+    gift: '无（裸专，无平台特典）',
+    price: 97, shippingBase: 24, shippingAdd: null, shippingSystem: true,
+    note: '智能专辑版·1车限10张', deadline: '2026-04-26 22:59'
+  },
+
+  // ===== 套装 =====
+  {
+    id: 22, album: 'Glow', type: '套装', ver: '套装',
+    platform: 'Weverse Shop', platformTag: 'Weverse', giftScore: 5,
+    gift: '🎉 小卡全套毕业！3款款式全部附赠，共3张，不用担心缺款',
+    contents: 'Glow Ver. ×2（共2张专辑）',
+    price: 168, shippingBase: 35.5, shippingAdd: 20, shippingSystem: false,
+    note: '1车限10套', deadline: '2026-04-26 22:59'
+  },
+  {
+    id: 23, album: 'Glow', type: '套装', ver: '套装',
+    platform: 'Minirecord（熊宝）', platformTag: '熊宝', giftScore: 1,
+    gift: '🃏 随机赠送2张小卡（款式不保证，可能重复）',
+    contents: 'Glow Ver. ×2（共2张专辑）',
+    price: 165, shippingBase: 25, shippingAdd: null, shippingSystem: true,
+    note: '1车限10套', deadline: '2026-04-25'
+  },
+  {
+    id: 24, album: 'Glow', type: '套装', ver: '套装',
+    platform: 'SR+AM', platformTag: 'StarRiver', giftScore: 5,
+    gift: '🎉 AM站小卡全套（共3张，全款式）\n🎉 SR站小卡全套×2（共4张，全款式）+ 拍立得全套（共2张）',
+    contents: 'Glow Ver. ×4 + Adventure Part 2 Ver. ×3（共7张专辑）',
+    price: 377, shippingBase: 56, shippingAdd: 0, shippingSystem: false,
+    note: '1车限1套', deadline: '2026-04-26 22:00'
+  },
+  {
+    id: 26, album: 'Glow', type: '套装', ver: '套装',
+    platform: 'Ktown4U（洪承汉堡店）', platformTag: 'Ktown4U', giftScore: 0,
+    gift: '无（裸专，无平台特典）',
+    contents: 'Glow Ver. ×2（两款封面各1张，共2张专辑）',
+    price: 125, shippingBase: 24, shippingAdd: null, shippingSystem: true,
+    note: 'Glow一键毕业·1车限10套', deadline: '2026-04-26 22:59'
+  },
+  {
+    id: 27, album: 'Glow', type: '套装', ver: '套装',
+    platform: 'MakeStar（洪承汉堡店）', platformTag: 'MakeStar', giftScore: 5,
+    gift: '🎁 MS独家：未公开自拍小卡3张（全款式，不随机）',
+    contents: '全版本4张专辑 + MS未公开自拍小卡3张',
+    price: 267, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: 'MS一键毕业·限时特卖', deadline: '2026-04-26 22:00'
+  },
+
+  // ===== 洪承汉堡店（yetimall）各平台版本 =====
+  {
+    id: 28, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'yetimall（洪承汉堡店）无特典', platformTag: '洪承汉堡', giftScore: 0,
+    gift: '无（裸专，无平台特典）',
+    price: 64, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: '无特典裸专·Glow最低价之一', deadline: '2026-04-26'
+  },
+  {
+    id: 29, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'yetimall（洪承汉堡店）EL版', platformTag: '洪承汉堡', giftScore: 2,
+    gift: '🃏 EverLine平台特典：每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
+    price: 69, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: 'EL版特典·价格低于熊宝/偶便同款', deadline: '2026-04-25'
+  },
+  {
+    id: 30, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'yetimall（洪承汉堡店）WHOSFAN版', platformTag: '洪承汉堡', giftScore: 2,
+    gift: '🃏 WHOSFAN平台特典：每买1张专辑随机送1张特典小卡（款式随机，凑齐可成全套）',
+    price: 81, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: 'WHOSFAN独家版本', deadline: '2026-04-26'
+  },
+  {
+    id: 31, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
+    platform: 'yetimall（洪承汉堡店）WVS版', platformTag: '洪承汉堡', giftScore: 2,
+    gift: '🃏 WVS平台特典：每买1张专辑随机送1张特典小卡（款式随机，凑齐可成全套）',
+    price: 82, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: 'WVS独家版本', deadline: '2026-04-25'
+  },
+  {
+    id: 32, album: 'Glow', type: '单张随机', ver: 'Adventure Part 2 Ver.',
+    platform: 'yetimall（洪承汉堡店）无特典', platformTag: '洪承汉堡', giftScore: 0,
+    gift: '无（裸专，无平台特典）',
+    price: 42, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: '无特典裸专·Adventure最低价之一', deadline: '2026-04-26'
+  },
+  {
+    id: 33, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
+    platform: 'yetimall（洪承汉堡店）无特典', platformTag: '洪承汉堡', giftScore: 0,
+    gift: '无（裸专，无平台特典）',
+    price: 98, shippingBase: 26, shippingAdd: null, shippingSystem: true,
+    note: '无特典裸专', deadline: '2026-04-26'
+  }
+];
+
+// ============================================================
+// Recommendation logic
+// ============================================================
+const VER_ORDER = ['Glow Ver.', 'Adventure Part 2 Ver.', 'XngHan Ver.', '套装'];
+const VER_LABEL = {
+  'Glow Ver.': 'Glow Ver.',
+  'Adventure Part 2 Ver.': 'Adventure Part 2 Ver.',
+  'XngHan Ver.': 'XngHan Ver.',
+  '套装': '套装'
+};
+
+// badges[id] = ['price','gift','overall']
+let badges = {};
+
+function giftLabel(score) {
+  if (score >= 5) return '小卡全套保障';
+  if (score >= 3) return '小卡 + 拍立得';
+  if (score >= 2) return '随机小卡（可凑套）';
+  if (score >= 1) return '随机小卡';
+  return '无特典';
+}
+
+function computeRecommendations() {
+  const grid = document.getElementById('rec-grid');
+  grid.innerHTML = '';
+  badges = {};
+
+  VER_ORDER.forEach(ver => {
+    const group = albums.filter(a => a.ver === ver && deadlineStatus(a.deadline) !== 'past');
+    if (!group.length) return;
+
+    const unit = ver === '套装' ? '套' : '张';
+    const minPrice = Math.min(...group.map(a => a.price));
+    const maxGift  = Math.max(...group.map(a => a.giftScore || 0));
+
+    // Score: gift quality > price > known shipping
+    const scored = group.map(a => ({
+      ...a,
+      _score: (a.giftScore || 0) * 15 - a.price + ((!a.shippingSystem && a.shippingBase !== null) ? 3 : 0)
+    })).sort((a, b) => b._score - a._score);
+
+    const winner = scored[0];
+    const runnerUps = scored.slice(1, 3); // up to 2 runner-ups
+
+    // Badges
+    group.filter(a => a.price === minPrice).forEach(a => {
+      badges[a.id] = badges[a.id] || [];
+      badges[a.id].push('price');
+    });
+    group.filter(a => (a.giftScore||0) === maxGift && maxGift > 0).forEach(a => {
+      badges[a.id] = badges[a.id] || [];
+      if (!badges[a.id].includes('gift')) badges[a.id].push('gift');
+    });
+    badges[winner.id] = badges[winner.id] || [];
+    if (!badges[winner.id].includes('overall')) badges[winner.id].push('overall');
+
+    // Build reason bullets
+    const reasons = [];
+    if (winner.price === minPrice) {
+      reasons.push({ icon: '💰', text: `专辑价最低，¥${winner.price}/${unit}` });
+    } else {
+      reasons.push({ icon: '💰', text: `专辑价 ¥${winner.price}/${unit}（最低为 ¥${minPrice}）` });
+    }
+    if ((winner.giftScore || 0) === maxGift && maxGift > 0) {
+      reasons.push({ icon: '🎁', text: `特典最丰富：${giftLabel(winner.giftScore)}` });
+    } else if ((winner.giftScore || 0) > 0) {
+      reasons.push({ icon: '🎁', text: `有特典：${giftLabel(winner.giftScore)}` });
+    } else {
+      reasons.push({ icon: '🎁', text: '本版本各平台均无特典' });
+    }
+    if (!winner.shippingSystem && winner.shippingBase !== null) {
+      reasons.push({ icon: '🚚', text: '运费固定可算，无隐藏费用' });
+    } else {
+      reasons.push({ icon: '🚚', text: '运费含系统叠加部分，结算时确认' });
+    }
+
+    // Runner-up text
+    const runnerText = runnerUps.map(a => {
+      const diff = a.price - winner.price;
+      const diffStr = diff > 0 ? `贵¥${diff}` : diff < 0 ? `便宜¥${-diff}` : '同价';
+      const giftDiff = (a.giftScore||0) > (winner.giftScore||0) ? '，特典更好' :
+                       (a.giftScore||0) < (winner.giftScore||0) ? '，特典较少' : '';
+      return `<strong>${a.platform}</strong>（${diffStr}${giftDiff}）`;
+    }).join('；');
+
+    grid.innerHTML += `
+    <div class="rec-card">
+      <div class="rec-card-header">
+        <span class="rec-crown">🏆</span>
+        <span class="rec-ver">${VER_LABEL[ver]}</span>
+      </div>
+      <div class="rec-card-body">
+        <div class="rec-pick-label">综合推荐选这家</div>
+        <div class="rec-pick-platform">${winner.platform}</div>
+        <div class="rec-pick-price">¥${winner.price} / ${unit}</div>
+        <div class="rec-reasons">
+          ${reasons.map(r => `<div class="rec-reason-item"><span class="r-icon">${r.icon}</span><span>${r.text}</span></div>`).join('')}
+        </div>
+        ${runnerText ? `<div class="rec-runner-up">次选：${runnerText}</div>` : ''}
+      </div>
+    </div>`;
+  });
+}
+
+// ============================================================
+// Filters state
+// ============================================================
+let filters = { type: 'all', ver: 'all', platform: 'all' };
+let sortMode = 'price-asc';
+const today = new Date();
+
+function setFilter(key, val, btn) {
+  filters[key] = val;
+  // Update button states
+  btn.closest('.filter-row').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards();
+}
+
+function sortCards(mode, btn) {
+  sortMode = mode;
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCards();
+}
+
+function calcShipping(item, qty) {
+  if (!qty || qty < 1) return null;
+  if (item.shippingBase === null) return null; // unknown
+  if (item.shippingAdd === null || item.shippingSystem) {
+    return { base: item.shippingBase, extra: null, total: null };
+  }
+  const total = item.shippingBase + (qty - 1) * item.shippingAdd;
+  return { base: item.shippingBase, extra: item.shippingAdd, total };
+}
+
+function deadlineStatus(dl) {
+  if (!dl) return 'normal';
+  const d = new Date(dl.replace(' ', 'T'));
+  const diffMs = d - today;
+  const diffDays = diffMs / (1000 * 60 * 60 * 24);
+  if (diffMs < 0) return 'past';
+  if (diffDays <= 3) return 'urgent';
+  return 'normal';
+}
+
+function formatDeadline(dl) {
+  if (!dl) return '—';
+  return dl.replace('2026-', '4月').replace(/-(\d+)/, '月$1日').replace(' ', ' ');
+}
+
+function buildCard(item) {
+  const dlStatus = deadlineStatus(item.deadline);
+  const pastClass = dlStatus === 'past' ? ' deadline-past' : '';
+  const nearClass = dlStatus === 'urgent' ? ' deadline-near' : '';
+  const dlColor = dlStatus === 'urgent' ? 'urgent' : (dlStatus === 'past' ? '' : 'normal');
+
+  const shippingStr = item.shippingBase === null ? '运费待确认' :
+    (item.shippingSystem ? `${item.shippingBase}元 + 系统叠加` :
+    (item.shippingAdd > 0 ? `${item.shippingBase} + ${item.shippingAdd}/件` :
+    item.shippingAdd === 0 ? `固定 ${item.shippingBase}元` : `${item.shippingBase}元`));
+
+  const giftText = (!item.gift || item.gift === '无') ? '无赠品特典' : item.gift.replace(/\n/g, '<br>');
+
+  return `
+  <div class="album-card${pastClass}${nearClass}"
+       data-type="${item.type}" data-ver="${item.ver}" data-platform="${item.platformTag}"
+       data-price="${item.price}" data-deadline="${item.deadline || '2099-01-01'}" data-id="${item.id}">
+    <div class="card-top">
+      <div class="card-platform">
+        ${item.platform}
+        <small>${item.album} · ${item.note}${item.platform.includes('Smart') ? ' 📱' : ''}</small>
+      </div>
+      <div class="card-price-badge">¥${item.price}<span>/${item.type === '套装' ? '套' : '张'}</span></div>
+    </div>
+    <div class="card-body">
+      ${(() => {
+        const b = badges[item.id] || [];
+        if (!b.length) return '';
+        return `<div class="badge-row">
+          ${b.includes('price') ? '<span class="rec-badge badge-price">💰 专辑价最低</span>' : ''}
+          ${b.includes('gift') ? '<span class="rec-badge badge-gift">🎁 特典最丰富</span>' : ''}
+          ${b.includes('overall') ? '<span class="rec-badge badge-overall">⭐ 综合推荐</span>' : ''}
+        </div>`;
+      })()}
+      <div class="card-tags">
+        <span class="tag tag-type">${item.type}</span>
+        <span class="tag tag-ver">${item.ver}</span>
+        ${item.note.includes('限') ? `<span class="tag tag-qty">${item.note.match(/\d+车.+/)?.[0] || item.note}</span>` : ''}
+      </div>
+      <div class="card-info">
+        ${item.contents ? `
+        <div class="info-row">
+          <span class="info-key">内含</span>
+          <span class="info-val" style="font-weight:600;color:#3949ab">${item.contents}</span>
+        </div>` : ''}
+        <div class="info-row">
+          <span class="info-key">特典</span>
+          <span class="info-val gift">${giftText}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">运费</span>
+          <span class="info-val shipping">${shippingStr}</span>
+        </div>
+        <div class="info-row">
+          <span class="info-key">截单</span>
+          <span class="info-val deadline ${dlColor}">${formatDeadline(item.deadline)}${dlStatus==='urgent'?' ⚠️':''}</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-calc">
+      <div class="calc-row">
+        <span class="calc-label">🧮 购买${item.type === '套装' ? '套数' : '张数'}估算总费用</span>
+        <input type="number" class="calc-input" min="1" max="10" placeholder="${item.type === '套装' ? '套数' : '张数'}"
+               oninput="onCalcInput(this, ${item.id})">
+      </div>
+      ${(item.shippingSystem || item.shippingBase === null) ? `
+      <div class="calc-warning">
+        <span class="warn-icon">⚠️</span>
+        <span><strong>运费仅供参考！</strong>此平台运费由系统在结算时自动计算，下方金额<strong>不含实际续重运费</strong>，到手价以平台结算页为准。</span>
+      </div>` : ''}
+      <div class="calc-result" id="calc-${item.id}"></div>
+    </div>
+  </div>`;
+}
+
+let totalItems = {};
+
+function onCalcInput(input, id) {
+  const qty = parseInt(input.value);
+  const item = albums.find(a => a.id === id);
+  const el = document.getElementById(`calc-${id}`);
+  if (!qty || qty < 1 || !item) {
+    el.innerHTML = '';
+    delete totalItems[id];
+    updateFloating();
+    return;
+  }
+
+  const albumTotal = item.price * qty;
+  const s = calcShipping(item, qty);
+  let html = '';
+
+  if (!s) {
+    html = `专辑费 <strong>¥${albumTotal}</strong> + <span class="note">⚠️ 运费未知，请以平台结算页为准</span>`;
+    totalItems[id] = { albumTotal, shippingTotal: 0, platform: item.platform, qty, hasUnknown: true };
+  } else if (s.total === null) {
+    html = `专辑费 <strong>¥${albumTotal}</strong> + 首重运费 ¥${s.base}<br><span class="note" style="color:#c43d00;font-style:normal">⚠️ 续重运费由平台系统计算，实际到手价 = 以上金额 + 系统运费，请以结算页为准</span>`;
+    totalItems[id] = { albumTotal, shippingTotal: s.base, platform: item.platform, qty, hasSystem: true };
+  } else {
+    const grand = albumTotal + s.total;
+    html = `专辑费 ¥${albumTotal} + 运费 ¥${s.total} = <strong>¥${grand}</strong>`;
+    totalItems[id] = { albumTotal, shippingTotal: s.total, grand, platform: item.platform, qty };
+  }
+
+  el.innerHTML = html;
+  updateFloating();
+}
+
+function updateFloating() {
+  const ids = Object.keys(totalItems);
+  if (ids.length === 0) {
+    document.getElementById('floating-total').classList.remove('show');
+    return;
+  }
+
+  let grand = 0, hasUnknown = false, hasSystem = false;
+  let details = [];
+  ids.forEach(id => {
+    const t = totalItems[id];
+    grand += t.albumTotal + t.shippingTotal;
+    if (t.hasUnknown) hasUnknown = true;
+    if (t.hasSystem) hasSystem = true;
+    details.push(`${t.platform}×${t.qty}`);
+  });
+
+  const ft = document.getElementById('floating-total');
+  ft.classList.add('show');
+  document.getElementById('ft-amount').textContent = `¥${grand.toFixed(1)}${hasUnknown||hasSystem?'+':''}`;
+  document.getElementById('ft-detail').textContent = details.join(' | ') + (hasSystem ? ' (含部分系统运费估算)' : '');
+}
+
+function filterMatch(card) {
+  const type = card.dataset.type;
+  const ver = card.dataset.ver;
+  const platform = card.dataset.platform;
+  if (filters.type !== 'all' && type !== filters.type) return false;
+  if (filters.ver !== 'all' && ver !== filters.ver) return false;
+  if (filters.platform !== 'all' && !platform.includes(filters.platform)) return false;
+  return true;
+}
+
+function renderCards() {
+  const grid = document.getElementById('cards-grid');
+  let filtered = albums.filter(a => {
+    const dummy = { dataset: { type: a.type, ver: a.ver, platform: a.platformTag } };
+    return filterMatch(dummy);
+  });
+
+  // Sort
+  if (sortMode === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+  else if (sortMode === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+  else if (sortMode === 'deadline') filtered.sort((a,b) => {
+    const da = new Date((a.deadline||'2099').replace(' ','T'));
+    const db = new Date((b.deadline||'2099').replace(' ','T'));
+    return da - db;
+  });
+
+  grid.innerHTML = filtered.map(buildCard).join('');
+
+  const noResults = document.getElementById('no-results');
+  if (filtered.length === 0) noResults.classList.add('show');
+  else noResults.classList.remove('show');
+
+  document.getElementById('result-count').textContent = `显示 ${filtered.length} / ${albums.length} 条`;
+}
+
+// Init
+computeRecommendations();
+renderCards();
+</script>
+</body>
+</html>
