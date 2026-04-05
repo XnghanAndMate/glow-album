@@ -1102,7 +1102,7 @@ const albums = [
     id: 20, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
     platform: 'Weverse Shop', platformTag: 'Weverse', giftScore: 0,
     gift: '无',
-    price: 129, shippingBase: 30.5, shippingAdd: 5, shippingSystem: false,
+    price: 129, shippingBase: 25.5, shippingAdd: 5, shippingSystem: false, shippingRule: 'first2_then_add',
     note: '1车限10张', deadline: '2026-04-26 22:59'
   },
   {
@@ -1406,13 +1406,23 @@ function getShippingMeta(item) {
       detail: `固定 ${item.shippingBase}元`
     };
   }
-  if (item.shippingAdd !== null && !item.shippingSystem) {
+  if (item.shippingRule === 'first2_then_add') {
     return {
       tier: 'estimable',
       tagClass: 'tag-ship-estimable',
       tagText: '可估算',
       label: '可估算',
-      detail: `${item.shippingBase} + ${item.shippingAdd}/件`
+      detail: `前 2 张共按 ${item.shippingBase} 元计，第 3 张起 +${item.shippingAdd} 元/张`
+    };
+  }
+  if (item.shippingAdd !== null && !item.shippingSystem) {
+    const unit = item.type === '套装' ? '套' : '张';
+    return {
+      tier: 'estimable',
+      tagClass: 'tag-ship-estimable',
+      tagText: '可估算',
+      label: '可估算',
+      detail: `首${unit === '套' ? '套' : '张'} ${item.shippingBase} 元，之后每多 1 ${unit} +${item.shippingAdd} 元`
     };
   }
   return {
@@ -1427,6 +1437,10 @@ function getShippingMeta(item) {
 function calcShipping(item, qty) {
   if (!qty || qty < 1) return null;
   if (item.shippingBase === null) return null; // unknown
+  if (item.shippingRule === 'first2_then_add') {
+    const total = qty <= 2 ? item.shippingBase : item.shippingBase + (qty - 2) * item.shippingAdd;
+    return { base: item.shippingBase, extra: item.shippingAdd, total, special: 'first2_then_add' };
+  }
   if (item.shippingAdd === null || item.shippingSystem) {
     return { base: item.shippingBase, extra: null, total: null };
   }
@@ -1649,7 +1663,8 @@ function onCalcInput(input, id) {
     totalItems[id] = { albumTotal, shippingTotal: s.base, platform: item.platform, qty, hasSystem: true };
   } else {
     const grand = albumTotal + s.total;
-    html = `专辑费 ¥${albumTotal} + 运费 ¥${s.total} = <strong>¥${grand}</strong>`;
+    const specialNote = s.special === 'first2_then_add' ? '<br><span class="note">运费规则：前 2 张共按首重计，第 3 张起再加续重</span>' : '';
+    html = `专辑费 ¥${albumTotal} + 运费 ¥${s.total} = <strong>¥${grand}</strong>${specialNote}`;
     totalItems[id] = { albumTotal, shippingTotal: s.total, grand, platform: item.platform, qty };
   }
 
