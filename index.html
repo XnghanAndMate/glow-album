@@ -588,6 +588,110 @@
   .calc-warning .warn-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
   .calc-warning strong { color: #4f7fb3; }
 
+
+  /* Compare */
+  .compare-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 10px rgba(41,73,105,0.06);
+  }
+  .compare-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .compare-tip { font-size: 12px; color: var(--text-muted); }
+  .compare-slots { display: flex; gap: 10px; flex-wrap: wrap; }
+  .compare-slot {
+    min-width: 180px;
+    background: var(--tag-bg);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .compare-slot strong { color: var(--text); display:block; margin-bottom: 3px; }
+  .compare-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .compare-btn-main, .compare-btn-sub {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .2s;
+    background: white;
+    color: var(--text);
+  }
+  .compare-btn-main {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    font-weight: 700;
+  }
+  .compare-btn-main:disabled { opacity: .45; cursor:not-allowed; }
+  .compare-table {
+    display: none;
+    grid-template-columns: 160px 1fr 1fr;
+    border-top: 1px solid var(--border);
+    margin-top: 14px;
+  }
+  .compare-table.show { display: grid; }
+  .compare-cell {
+    padding: 12px 10px;
+    border-bottom: 1px solid #edf3f8;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .compare-label {
+    color: var(--text-muted);
+    background: #fafcff;
+    font-weight: 700;
+  }
+  .compare-value strong { color: var(--text); }
+  .compare-winner {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    background: #e8f2fb;
+    color: #3a6d9d;
+  }
+  .card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .mini-btn {
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--text);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .mini-btn:hover { background: var(--primary-light); border-color: var(--primary); }
+  .mini-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+  .album-card.compare-picked {
+    border-color: var(--primary);
+    box-shadow: 0 8px 22px rgba(84,130,173,0.12);
+  }
+  @media (max-width: 720px) {
+    .compare-table { grid-template-columns: 110px 1fr 1fr; }
+    .compare-slot { min-width: 140px; }
+  }
+
   /* Disclaimer */
   .disclaimer {
     background: #f8fbfd;
@@ -648,7 +752,7 @@
   <div class="section">
     <div class="section-title">📬 各平台运费说明</div>
     <div class="shipping-guide">
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;">运费现在分成 3 类显示：<strong style="color:var(--text)">固定运费</strong>、<strong style="color:var(--text)">可估算</strong>、<strong style="color:var(--text)">结算页计算</strong>。熊宝与偶便系列已按你之前汇总表补齐，不再单独标成“信息不完整”。</p>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;">运费现在分成 3 类显示：<strong style="color:var(--text)">固定运费</strong>、<strong style="color:var(--text)">可估算</strong>、<strong style="color:var(--text)">结算页计算</strong>。本页只写公开页能确认到的规则；像 Ktown4U 官方就明确写了<strong style="color:var(--text)">付款页面可以确认运费</strong>，因此这类平台不写死续重。</p>
       <div class="legend" style="margin-bottom:14px;">
         <div class="legend-item"><div class="legend-dot" style="background:#2f7a58"></div> 固定运费：可直接算到手价</div>
         <div class="legend-item"><div class="legend-dot" style="background:#2f6ea5"></div> 可估算：首重 + 续重规则明确</div>
@@ -665,7 +769,7 @@
         </div>
         <div class="shipping-item">
           <div class="platform-name">Ktown4U</div>
-          <div class="shipping-detail">首重 <span>24元</span><br>续重系统自动叠加计算</div>
+          <div class="shipping-detail">首重 <span>24元</span><br>官方说明：<span>付款页面确认运费</span></div>
         </div>
         <div class="shipping-item">
           <div class="platform-name">MakeStar</div>
@@ -707,6 +811,35 @@
     <p style="font-size:11px;color:var(--text-muted);margin-top:2px;margin-bottom:16px">
       ※ “日常性价比推荐”更偏向价格、特典和运费规则；“一键毕业推荐”更偏向一步到位的省心程度，不一定是单价最低。
     </p>
+  </div>
+
+
+  <!-- Compare Panel -->
+  <div class="section">
+    <div class="section-title">⚖️ 两店自动对比</div>
+    <div class="compare-panel">
+      <div class="compare-top">
+        <div>
+          <p style="font-size:13px;color:var(--text);font-weight:700;margin-bottom:4px;">从下方卡片里任选 2 家加入对比</p>
+          <div class="compare-tip">适合快速比较价格、特典、运费规则和是否更适合一键毕业。</div>
+        </div>
+        <div class="compare-actions">
+          <button class="compare-btn-main" id="run-compare-btn" onclick="renderComparePanel()" disabled>生成对比</button>
+          <button class="compare-btn-sub" onclick="clearCompare()">清空选择</button>
+        </div>
+      </div>
+      <div class="compare-slots">
+        <div class="compare-slot" id="compare-slot-1">
+          <strong>对比位 1</strong>
+          还没选择
+        </div>
+        <div class="compare-slot" id="compare-slot-2">
+          <strong>对比位 2</strong>
+          还没选择
+        </div>
+      </div>
+      <div class="compare-table" id="compare-table"></div>
+    </div>
   </div>
 
   <!-- Filters -->
@@ -799,7 +932,7 @@
     <div class="disc-title">📋 免责声明</div>
     本页面信息由粉丝整理汇总，仅供参考，不构成任何购买建议。请注意以下事项：<br>
     1. <strong>价格与特典</strong>：各平台价格、赠品内容可能随时调整，实际以各平台官方页面公示为准，本页面不保证信息的实时准确性。<br>
-    2. <strong>运费估算</strong>：本页将运费拆分为“固定运费 / 可估算 / 结算页计算”三类。熊宝与偶便系列已按你汇总表补齐规则；其中“结算页计算”类<strong>仍无法在本页精确算到最终到手价</strong>，下单前请务必在平台结算页确认实际运费。<br>
+    2. <strong>运费估算</strong>：本页将运费拆分为“固定运费 / 可估算 / 结算页计算”三类；其中“结算页计算”类<strong>仍无法在本页精确算到最终到手价</strong>，下单前请务必在平台结算页确认实际运费。<br>
     3. <strong>截止时间</strong>：所有截单时间以各平台公告为准，建议提前下单，因错过截单日期导致的损失本页面概不负责。<br>
     4. <strong>库存限制</strong>：部分平台设有每车限购数量，具体限制以实际下单时页面显示为准。<br>
     5. <strong>性价比推荐</strong>：综合推荐基于公开信息的机械计算，不代表任何平台立场，购买决策请结合个人需求自行判断。
@@ -847,7 +980,7 @@ const albums = [
     platform: 'Ktown4U', platformTag: 'Ktown4U', giftScore: 2,
     gift: '🃏 每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
     price: 63, shippingBase: 24, shippingAdd: null, shippingSystem: true,
-    note: '1车限10张', deadline: '2026-04-26 22:59'
+    note: '付款页确认运费·1车限10张', deadline: '2026-04-26 22:59'
   },
   {
     id: 4, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
@@ -926,7 +1059,7 @@ const albums = [
     platform: 'Ktown4U', platformTag: 'Ktown4U', giftScore: 0,
     gift: '无',
     price: 44, shippingBase: 24, shippingAdd: null, shippingSystem: true,
-    note: '1车限10张', deadline: '2026-04-26 22:59'
+    note: '付款页确认运费·1车限10张', deadline: '2026-04-26 22:59'
   },
   {
     id: 15, album: 'Glow', type: '单张随机', ver: 'Adventure Part 2 Ver.',
@@ -940,7 +1073,7 @@ const albums = [
     platform: '熊宝综合', platformTag: '熊宝', giftScore: 0,
     gift: '无',
     price: 44, shippingBase: 25, shippingAdd: null, shippingSystem: true,
-    note: '1车限10张', deadline: '2026-04-25'
+    note: '25元起·结算页计算·1车限10张', deadline: '2026-04-25'
   },
 
   // ===== 单张随机 - XngHan Ver. =====
@@ -963,7 +1096,7 @@ const albums = [
     platform: 'Ktown4U', platformTag: 'Ktown4U', giftScore: 0,
     gift: '无',
     price: 98, shippingBase: 24, shippingAdd: null, shippingSystem: true,
-    note: '1车限10张', deadline: '2026-04-26 22:59'
+    note: '付款页确认运费·1车限10张', deadline: '2026-04-26 22:59'
   },
   {
     id: 20, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
@@ -977,7 +1110,7 @@ const albums = [
     platform: '熊宝综合', platformTag: '熊宝', giftScore: 0,
     gift: '无',
     price: 98, shippingBase: 25, shippingAdd: null, shippingSystem: true,
-    note: '1车限10张', deadline: '2026-04-25'
+    note: '25元起·结算页计算·1车限10张', deadline: '2026-04-25'
   },
 
   // ===== 单张随机 - XngHan Ver. Smart Album =====
@@ -986,7 +1119,7 @@ const albums = [
     platform: 'Ktown4U Smart Album', platformTag: 'Ktown4U', giftScore: 0,
     gift: '无（裸专，无平台特典）',
     price: 97, shippingBase: 24, shippingAdd: null, shippingSystem: true,
-    note: '智能专辑版·1车限10张', deadline: '2026-04-26 22:59'
+    note: '付款页确认运费·智能专辑版·1车限10张', deadline: '2026-04-26 22:59'
   },
 
   // ===== 套装 =====
@@ -1004,7 +1137,7 @@ const albums = [
     gift: '🃏 随机赠送2张小卡（款式不保证，可能重复）',
     contents: 'Glow Ver. ×2（共2张专辑）',
     price: 165, shippingBase: 25, shippingAdd: null, shippingSystem: true,
-    note: '1车限10套', deadline: '2026-04-25'
+    note: '25元起·结算页计算·1车限10套', deadline: '2026-04-25'
   },
   {
     id: 24, album: 'Glow', type: '套装', ver: '套装',
@@ -1020,7 +1153,7 @@ const albums = [
     gift: '无（裸专，无平台特典）',
     contents: 'Glow Ver. ×2（两款封面各1张，共2张专辑）',
     price: 125, shippingBase: 24, shippingAdd: null, shippingSystem: true,
-    note: 'Glow一键毕业·1车限10套', deadline: '2026-04-26 22:59'
+    note: 'Glow一键毕业·付款页确认运费·1车限10套', deadline: '2026-04-26 22:59'
   },
   {
     id: 27, album: 'Glow', type: '套装', ver: '套装',
@@ -1037,42 +1170,42 @@ const albums = [
     platform: 'yetimall（洪承汉堡店）无特典', platformTag: '洪承汉堡', giftScore: 0,
     gift: '无（裸专，无平台特典）',
     price: 64, shippingBase: 26, shippingAdd: null, shippingSystem: true,
-    note: '无特典裸专·Glow最低价之一', deadline: '2026-04-26'
+    note: '无特典裸专·结算页计算', deadline: '2026-04-26'
   },
   {
     id: 29, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
     platform: 'yetimall（洪承汉堡店）EL版', platformTag: '洪承汉堡', giftScore: 2,
     gift: '🃏 EverLine平台特典：每买1张专辑随机送1张小卡（3款式选1，凑齐3款算全套）',
     price: 69, shippingBase: 26, shippingAdd: null, shippingSystem: true,
-    note: 'EL版特典·价格低于熊宝/偶便同款', deadline: '2026-04-25'
+    note: 'EL版特典·结算页计算', deadline: '2026-04-25'
   },
   {
     id: 30, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
     platform: 'yetimall（洪承汉堡店）WHOSFAN版', platformTag: '洪承汉堡', giftScore: 2,
     gift: '🃏 WHOSFAN平台特典：每买1张专辑随机送1张特典小卡（款式随机，凑齐可成全套）',
     price: 81, shippingBase: 26, shippingAdd: null, shippingSystem: true,
-    note: 'WHOSFAN独家版本', deadline: '2026-04-26'
+    note: 'WHOSFAN独家版本·结算页计算', deadline: '2026-04-26'
   },
   {
     id: 31, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
     platform: 'yetimall（洪承汉堡店）WVS版', platformTag: '洪承汉堡', giftScore: 2,
     gift: '🃏 WVS平台特典：每买1张专辑随机送1张特典小卡（款式随机，凑齐可成全套）',
     price: 82, shippingBase: 26, shippingAdd: null, shippingSystem: true,
-    note: 'WVS独家版本', deadline: '2026-04-25'
+    note: 'WVS独家版本·结算页计算', deadline: '2026-04-25'
   },
   {
     id: 32, album: 'Glow', type: '单张随机', ver: 'Adventure Part 2 Ver.',
     platform: 'yetimall（洪承汉堡店）无特典', platformTag: '洪承汉堡', giftScore: 0,
     gift: '无（裸专，无平台特典）',
     price: 42, shippingBase: 26, shippingAdd: null, shippingSystem: true,
-    note: '无特典裸专·Adventure最低价之一', deadline: '2026-04-26'
+    note: '无特典裸专·结算页计算', deadline: '2026-04-26'
   },
   {
     id: 33, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
     platform: 'yetimall（洪承汉堡店）无特典', platformTag: '洪承汉堡', giftScore: 0,
     gift: '无（裸专，无平台特典）',
     price: 98, shippingBase: 26, shippingAdd: null, shippingSystem: true,
-    note: '无特典裸专', deadline: '2026-04-26'
+    note: '无特典裸专·结算页计算', deadline: '2026-04-26'
   }
 ];
 
@@ -1195,7 +1328,7 @@ function computeRecommendations() {
 
   const graduationCandidates = albums
     .filter(a => deadlineStatus(a.deadline) !== 'past')
-    .filter(a => /一键毕业/.test(a.note || '') || /全版本/.test(a.contents || ''));
+    .filter(a => /一键毕业/.test(a.note || '') || /全版本/.test(a.contents || '') || a.platform === 'SR+AM');
 
   const sortedGraduation = graduationCandidates.map(a => {
     const shipMeta = getShippingMeta(a);
@@ -1209,7 +1342,7 @@ function computeRecommendations() {
     if (!badges[item.id].includes('graduation')) badges[item.id].push('graduation');
     const shipMeta = getShippingMeta(item);
     const reasons = [
-      { icon: '🎓', text: /全版本/.test(item.contents || '') ? '全版本直出，更适合一步到位' : '带“一键毕业”标记，少补单少折腾' },
+      { icon: '🎓', text: item.platform === 'SR+AM' ? '双平台全套特典一次拿齐，属于高配毕业向' : /全版本/.test(item.contents || '') ? '全版本直出，更适合一步到位' : '带“一键毕业”标记，少补单少折腾' },
       { icon: '🎁', text: item.giftScore > 0 ? `附带 ${giftLabel(item.giftScore)}` : '以专辑本体毕业为主，特典不是核心卖点' },
       { icon: '🚚', text: shipMeta.tier === 'estimable' ? '运费规则明确，预算更好控制' : '运费需看结算页，适合重视省心的人' },
       { icon: '💰', text: `当前价格 ¥${item.price}/套` }
@@ -1218,7 +1351,7 @@ function computeRecommendations() {
     gradGrid.innerHTML += createRecommendationCard({
       title: idx === 0 ? '首选一键毕业方案' : '可选一键毕业方案',
       icon: idx === 0 ? '🎓' : '📦',
-      verLabel: item.note.includes('一键毕业') ? '一键毕业' : '全版本方案',
+      verLabel: item.platform === 'SR+AM' ? '高配毕业' : item.note.includes('一键毕业') ? '一键毕业' : '全版本方案',
       platform: item.platform,
       priceText: `¥${item.price} / 套`,
       reasons,
@@ -1327,7 +1460,7 @@ function buildCard(item) {
   const giftText = (!item.gift || item.gift === '无') ? '无赠品特典' : item.gift.replace(/\n/g, '<br>');
 
   return `
-  <div class="album-card${pastClass}${nearClass}"
+  <div class="album-card${pastClass}${nearClass}${compareIds.includes(item.id) ? ' compare-picked' : ''}"
        data-type="${item.type}" data-ver="${item.ver}" data-platform="${item.platformTag}"
        data-price="${item.price}" data-deadline="${item.deadline || '2099-01-01'}" data-id="${item.id}">
     <div class="card-top">
@@ -1373,6 +1506,9 @@ function buildCard(item) {
           <span class="info-val deadline ${dlColor}">${formatDeadline(item.deadline)}${dlStatus==='urgent'?' ⚠️':''}</span>
         </div>
       </div>
+      <div class="card-actions">
+        <button class="mini-btn ${compareIds.includes(item.id) ? 'active' : ''}" onclick="toggleCompare(${item.id})">${compareIds.includes(item.id) ? '已加入对比' : '加入对比'}</button>
+      </div>
     </div>
     <div class="card-calc">
       <div class="calc-row">
@@ -1390,7 +1526,103 @@ function buildCard(item) {
   </div>`;
 }
 
+
 let totalItems = {};
+let compareIds = [];
+
+function updateCompareSlots() {
+  const slot1 = document.getElementById('compare-slot-1');
+  const slot2 = document.getElementById('compare-slot-2');
+  const btn = document.getElementById('run-compare-btn');
+  const items = compareIds.map(id => albums.find(a => a.id === id)).filter(Boolean);
+  [slot1, slot2].forEach((slot, idx) => {
+    const item = items[idx];
+    if (!item) {
+      slot.innerHTML = `<strong>对比位 ${idx + 1}</strong>还没选择`;
+      return;
+    }
+    slot.innerHTML = `<strong>${item.platform}</strong>${item.ver} · ¥${item.price}${item.type === '套装' ? '/套' : '/张'}<br>${getShippingMeta(item).tagText}`;
+  });
+  btn.disabled = items.length !== 2;
+}
+
+function toggleCompare(id) {
+  const idx = compareIds.indexOf(id);
+  if (idx >= 0) {
+    compareIds.splice(idx, 1);
+  } else {
+    if (compareIds.length >= 2) compareIds.shift();
+    compareIds.push(id);
+  }
+  renderCards();
+  updateCompareSlots();
+  if (compareIds.length === 2) renderComparePanel();
+  else document.getElementById('compare-table').classList.remove('show');
+}
+
+function compareMetric(a, b, key) {
+  if (key === 'price') return a.price === b.price ? 0 : (a.price < b.price ? 1 : 2);
+  if (key === 'gift') return (a.giftScore||0) === (b.giftScore||0) ? 0 : ((a.giftScore||0) > (b.giftScore||0) ? 1 : 2);
+  if (key === 'shipping') {
+    const order = { fixed: 3, estimable: 2, system: 1 };
+    const av = order[getShippingMeta(a).tier] || 0;
+    const bv = order[getShippingMeta(b).tier] || 0;
+    return av === bv ? 0 : (av > bv ? 1 : 2);
+  }
+  if (key === 'graduation') {
+    const score = item => (item.platform === 'SR+AM' ? 3 : (/一键毕业/.test(item.note || '') || /全版本/.test(item.contents || '') ? 2 : 0));
+    const av = score(a), bv = score(b);
+    return av === bv ? 0 : (av > bv ? 1 : 2);
+  }
+  return 0;
+}
+
+function winnerBadge(flag, text) {
+  return flag ? `<span class="compare-winner">${text}</span>` : '';
+}
+
+function renderComparePanel() {
+  const table = document.getElementById('compare-table');
+  const items = compareIds.map(id => albums.find(a => a.id === id)).filter(Boolean);
+  if (items.length !== 2) {
+    table.classList.remove('show');
+    table.innerHTML = '';
+    return;
+  }
+  const [a, b] = items;
+  const shipA = getShippingMeta(a), shipB = getShippingMeta(b);
+  const calcA = calcShipping(a, 1), calcB = calcShipping(b, 1);
+  const estA = calcA ? `¥${(a.price + (calcA.total ?? calcA.base)).toFixed(1)}${calcA.total === null ? '+' : ''}` : `¥${a.price}+`;
+  const estB = calcB ? `¥${(b.price + (calcB.total ?? calcB.base)).toFixed(1)}${calcB.total === null ? '+' : ''}` : `¥${b.price}+`;
+  const priceWin = compareMetric(a,b,'price');
+  const giftWin = compareMetric(a,b,'gift');
+  const shipWin = compareMetric(a,b,'shipping');
+  const gradWin = compareMetric(a,b,'graduation');
+  const rows = [
+    ['平台', `<strong>${a.platform}</strong><br>${a.ver}`, `<strong>${b.platform}</strong><br>${b.ver}`],
+    ['专辑价', `¥${a.price}${winnerBadge(priceWin===1,'更省钱')}`, `¥${b.price}${winnerBadge(priceWin===2,'更省钱')}`],
+    ['买1件估算', `${estA}<br><span style="color:var(--text-muted)">仅按 1 张/1 套估算</span>`, `${estB}<br><span style="color:var(--text-muted)">仅按 1 张/1 套估算</span>`],
+    ['特典强度', `${giftLabel(a.giftScore||0)}${winnerBadge(giftWin===1,'特典更强')}`, `${giftLabel(b.giftScore||0)}${winnerBadge(giftWin===2,'特典更强')}`],
+    ['运费规则', `${shipA.tagText}<br>${shipA.detail}${winnerBadge(shipWin===1,'预算更好算')}`, `${shipB.tagText}<br>${shipB.detail}${winnerBadge(shipWin===2,'预算更好算')}`],
+    ['毕业友好度', `${a.platform === 'SR+AM' ? '高配毕业向' : /一键毕业/.test(a.note || '') ? '一键毕业' : /全版本/.test(a.contents || '') ? '全版本直出' : '普通购买'}${winnerBadge(gradWin===1,'更省心')}`, `${b.platform === 'SR+AM' ? '高配毕业向' : /一键毕业/.test(b.note || '') ? '一键毕业' : /全版本/.test(b.contents || '') ? '全版本直出' : '普通购买'}${winnerBadge(gradWin===2,'更省心')}`],
+    ['特典摘要', `${(a.gift || '无').replace(/\n/g,'<br>')}`, `${(b.gift || '无').replace(/\n/g,'<br>')}`],
+    ['备注', `${a.note || '—'}<br>截单：${formatDeadline(a.deadline)}`, `${b.note || '—'}<br>截单：${formatDeadline(b.deadline)}`]
+  ];
+  table.innerHTML = rows.map(r => `
+    <div class="compare-cell compare-label">${r[0]}</div>
+    <div class="compare-cell compare-value">${r[1]}</div>
+    <div class="compare-cell compare-value">${r[2]}</div>
+  `).join('');
+  table.classList.add('show');
+}
+
+function clearCompare() {
+  compareIds = [];
+  updateCompareSlots();
+  document.getElementById('compare-table').classList.remove('show');
+  renderCards();
+}
+
 
 function onCalcInput(input, id) {
   const qty = parseInt(input.value);
@@ -1486,6 +1718,7 @@ function renderCards() {
 // Init
 computeRecommendations();
 renderCards();
+updateCompareSlots();
 </script>
 </body>
 </html>
