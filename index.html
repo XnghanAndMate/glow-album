@@ -735,7 +735,7 @@
   <div class="header-inner">
   <h1>XngHan&Xoul — <span>1st Mini Album</span> [Glow]</h1>
   <p>各平台购买汇总 · 特典说明 · 运费估算</p>
-  <div class="badge">💿 数据截止日期：最晚 2026/4/26</div>
+  <div class="badge">💿 数据截止日期：最晚 4月26日</div>
   </div>
 </div>
 
@@ -745,7 +745,7 @@
   <div class="info-bar">
     <div class="info-pill"><span class="icon">📦</span> 版本：<strong>Glow Ver. / Adventure Part 2 Ver. / XngHan Ver.</strong></div>
     <div class="info-pill"><span class="icon">🛒</span> 类型：<strong>单张随机 / 套装</strong></div>
-    <div class="info-pill"><span class="icon">⏰</span> 最晚截单：<strong>2026/4/26 23:59</strong></div>
+    <div class="info-pill"><span class="icon">⏰</span> 最晚截单：<strong>4月26日 23:59</strong></div>
   </div>
 
   <!-- Shipping Guide -->
@@ -1117,7 +1117,7 @@ const albums = [
   {
     id: 25, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
     platform: 'Ktown4U Smart Album', platformTag: 'Ktown4U', giftScore: 0,
-    gift: '无（裸专，无平台特典）',
+    gift: '无特典',
     price: 97, shippingBase: 24, shippingAdd: null, shippingSystem: true,
     note: '付款页确认运费·智能专辑版·1车限10张', deadline: '2026-04-26 22:59'
   },
@@ -1150,7 +1150,7 @@ const albums = [
   {
     id: 26, album: 'Glow', type: '套装', ver: '套装',
     platform: 'Ktown4U（洪承汉堡店）', platformTag: 'Ktown4U', giftScore: 0,
-    gift: '无（裸专，无平台特典）',
+    gift: '无特典',
     contents: 'Glow Ver. ×2（两款封面各1张，共2张专辑）',
     price: 125, shippingBase: 24, shippingAdd: null, shippingSystem: true,
     note: 'Glow一键毕业·付款页确认运费·1车限10套', deadline: '2026-04-26 22:59'
@@ -1168,9 +1168,9 @@ const albums = [
   {
     id: 28, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
     platform: 'yetimall（洪承汉堡店）无特典', platformTag: '洪承汉堡', giftScore: 0,
-    gift: '无（裸专，无平台特典）',
+    gift: '无特典',
     price: 64, shippingBase: 26, shippingAdd: null, shippingSystem: true,
-    note: '无特典裸专·结算页计算', deadline: '2026-04-26'
+    note: '无特典·结算页计算', deadline: '2026-04-26'
   },
   {
     id: 29, album: 'Glow', type: '单张随机', ver: 'Glow Ver.',
@@ -1196,16 +1196,16 @@ const albums = [
   {
     id: 32, album: 'Glow', type: '单张随机', ver: 'Adventure Part 2 Ver.',
     platform: 'yetimall（洪承汉堡店）无特典', platformTag: '洪承汉堡', giftScore: 0,
-    gift: '无（裸专，无平台特典）',
+    gift: '无特典',
     price: 42, shippingBase: 26, shippingAdd: null, shippingSystem: true,
-    note: '无特典裸专·结算页计算', deadline: '2026-04-26'
+    note: '无特典·结算页计算', deadline: '2026-04-26'
   },
   {
     id: 33, album: 'Glow', type: '单张随机', ver: 'XngHan Ver.',
     platform: 'yetimall（洪承汉堡店）无特典', platformTag: '洪承汉堡', giftScore: 0,
-    gift: '无（裸专，无平台特典）',
+    gift: '无特典',
     price: 98, shippingBase: 26, shippingAdd: null, shippingSystem: true,
-    note: '无特典裸专·结算页计算', deadline: '2026-04-26'
+    note: '无特典·结算页计算', deadline: '2026-04-26'
   }
 ];
 
@@ -1460,7 +1460,12 @@ function deadlineStatus(dl) {
 
 function formatDeadline(dl) {
   if (!dl) return '—';
-  return dl.replace('2026-', '4月').replace(/-(\d+)/, '月$1日').replace(' ', ' ');
+  const normalized = String(dl).replace('T', ' ').trim();
+  const m = normalized.match(/^(\d{4})-(\d{2})-(\d{2})(?:\s+(\d{2}):(\d{2}))?$/);
+  if (!m) return normalized;
+  const [, , month, day, hour, minute] = m;
+  const base = `${Number(month)}月${Number(day)}日`;
+  return (hour && minute) ? `${base} ${hour}:${minute}` : base;
 }
 
 function buildCard(item) {
@@ -1471,7 +1476,7 @@ function buildCard(item) {
 
   const shippingMeta = getShippingMeta(item);
   const shippingStr = shippingMeta.detail;
-  const giftText = (!item.gift || item.gift === '无') ? '无赠品特典' : item.gift.replace(/\n/g, '<br>');
+  const giftText = (!item.gift || item.gift === '无') ? '无特典' : item.gift.replace(/\n/g, '<br>');
 
   return `
   <div class="album-card${pastClass}${nearClass}${compareIds.includes(item.id) ? ' compare-picked' : ''}"
